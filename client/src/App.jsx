@@ -10,6 +10,7 @@ import { Navigation } from "./components/navigation";
 import Home from "./pages/Home";
 import FindService from "./pages/FindService/FindService";
 import 'leaflet/dist/leaflet.css';
+import Signup from "./pages/SignUp";
 
 
 const Layout = () => {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
         element: <FindService />,
       },
     ],
+  },
+  {
+    path:"/signup",
+    element:<Signup/>
   },
 ]);
 
