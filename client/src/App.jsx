@@ -10,7 +10,8 @@ import Home from "./pages/Home";
 import FindService from "./pages/FindService/FindService";
 import 'leaflet/dist/leaflet.css';
 import Signup from "./pages/SignUp";
-
+import Login from "./pages/Login";
+import Nav from './components/Nav'
 
 const Layout = () => {
   return (
