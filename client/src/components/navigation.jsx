@@ -4,10 +4,14 @@ import DropdownMenu from "./DropdownMenu";
 
 export const Navigation = (props) => {
   const serviceMenuItems = [
-    <Link to="/service-1">Service 1</Link>,
-    <Link to="/service-2">Service 2</Link>,
-    <Link to="/service-3">Service 3</Link>,
+    <Link to="/find-a-service/plumber">Plumber</Link>,
+    <Link to="/find-a-service/electrician">Electrician</Link>,
+    <Link to="/find-a-service/carpenter">Carpenter</Link>,
+    <Link to="/find-a-service/painter">Painter</Link>,
+    <Link to="/find-a-service/ac-technician">AC Technician</Link>,
+    <Link to="/find-a-service/appliance-repair">Appliance Repair</Link>,
   ];
+  
 
   return (
     <nav id="menu" className="navbar navbar-default ">
@@ -34,9 +38,12 @@ export const Navigation = (props) => {
           id="bs-example-navbar-collapse-1"
         >
           <ul className="nav navbar-nav navbar-right">
-          <li>
-          <DropdownMenu buttonText="Find a service" menuItems={serviceMenuItems} />
-        </li>
+            <li>
+              <DropdownMenu
+                buttonText="Find a service"
+                menuItems={serviceMenuItems}
+              />
+            </li>
             <li>
               <Link to="/post-job" className="page-scroll">
                 Post a job
