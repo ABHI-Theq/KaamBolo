@@ -1,7 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import DropdownMenu from "./DropdownMenu";
 
 export const Navigation = (props) => {
+  const serviceMenuItems = [
+    <Link to="/service-1">Service 1</Link>,
+    <Link to="/service-2">Service 2</Link>,
+    <Link to="/service-3">Service 3</Link>,
+  ];
+
   return (
     <nav id="menu" className="navbar navbar-default ">
       <div className="container">
@@ -27,11 +34,9 @@ export const Navigation = (props) => {
           id="bs-example-navbar-collapse-1"
         >
           <ul className="nav navbar-nav navbar-right">
-            <li>
-              <Link to="/find-a-service" className="page-scroll">
-                Find a service
-              </Link>
-            </li>
+          <li>
+          <DropdownMenu buttonText="Find a service" menuItems={serviceMenuItems} />
+        </li>
             <li>
               <Link to="/post-job" className="page-scroll">
                 Post a job
