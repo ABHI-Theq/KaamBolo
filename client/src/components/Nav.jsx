@@ -123,10 +123,14 @@ const Nav = () => {
 
           {/* Signup / Login */}
           <Link
-            to="/signup-login"
+            to="/signup"
             className="text-lg font-semibold hover:text-yellow-400"
           >
-            Signup / Login
+            Signup
+          </Link>
+          <span> | </span>
+          <Link to='/login'
+                      className="text-lg font-semibold hover:text-yellow-400">Login
           </Link>
         </div>
       </div>
