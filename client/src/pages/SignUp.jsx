@@ -71,6 +71,19 @@ function Signup() {
             />
           </div>
 
+          <Autocomplete
+        multiple
+        options={skillOptions}
+        getOptionLabel={(option) => option.title}
+        value={selectedSkills}
+        onChange={(event, newValue) => {
+            setSelectedSkills(newValue)
+            inputs.Skills=selectedSkills
+        }}
+        renderInput={(params) => (
+          <TextField {...params} label="Skills" placeholder="Select skills" />
+        )}
+      />
           {/* Submit Button */}
           <div>
             <button
@@ -88,19 +101,7 @@ function Signup() {
               <a href="/login" className="text-blue-500 hover:underline">Login here</a>
             </p>
           </div>
-          <Autocomplete
-        multiple
-        options={skillOptions}
-        getOptionLabel={(option) => option.title}
-        value={selectedSkills}
-        onChange={(event, newValue) => {
-            setSelectedSkills(newValue)
-            inputs.Skills=selectedSkills
-        }}
-        renderInput={(params) => (
-          <TextField {...params} label="Skills" placeholder="Select skills" />
-        )}
-      />
+
         </form>
       </div>
     </div>
