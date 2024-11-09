@@ -55,7 +55,7 @@ const Nav = () => {
             </button>
             {isDropdownOpen && (
               <div
-                className="absolute left-0 mt-2 w-48 bg-white text-gray-900 rounded-md shadow-lg z-20"
+                className="absolute left-0 w-48 bg-white text-gray-900 rounded-md shadow-lg z-20"
                 onMouseEnter={openDropdown}
                 onMouseLeave={closeDropdown}
               >
