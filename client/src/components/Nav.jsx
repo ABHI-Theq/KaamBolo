@@ -13,7 +13,7 @@ const Nav = () => {
     <nav className="bg-blue-800 text-white">
       <div className="container mx-auto flex justify-between items-center px-4 py-3">
         {/* Brand */}
-        <Link to="/home" className="text-2xl font-bold">
+        <Link to="/" className="text-2xl font-bold">
           KaamBolo
         </Link>
 
@@ -112,6 +112,13 @@ const Nav = () => {
               </div>
             )}
           </div>
+
+          <Link
+            to="/about"
+            className="text-lg font-semibold hover:text-yellow-400"
+          >
+            About
+          </Link>
 
           {/* Post a Job */}
           <Link
