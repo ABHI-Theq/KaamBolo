@@ -8,6 +8,9 @@ import {
 import "./App.css";
 import { Navigation } from "./components/navigation";
 import Home from "./pages/Home";
+import FindService from "./pages/FindService/FindService";
+import 'leaflet/dist/leaflet.css';
+
 
 const Layout = () => {
   return (
@@ -26,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/find-a-service",
+        element: <FindService />,
       },
     ],
   },

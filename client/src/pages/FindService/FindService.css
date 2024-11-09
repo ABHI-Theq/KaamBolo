@@ -1,0 +1,44 @@
+.find-service {
+  height: calc(100vh - 120px);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.customer-profile {
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  position: relative;
+}
+.heartbeat {
+  position: absolute;
+  width: 6rem; /* Increased size from 3.75rem to 6rem */
+  height: 6rem; /* Increased size from 3.75rem to 6rem */
+  background-color: #7932f6;
+  border-radius: 50%; /* Ensures the shape remains circular */
+  opacity: 0.75;
+  animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes ping {
+  75%, 100% {
+    transform: scale(7); /* Increased scale from 2 to 3 for a larger pulse effect */
+    opacity: 0;
+  }
+}
+
+.worker-profile {
+  position: absolute;
+}
+
+.worker-profile-pic {
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+}
