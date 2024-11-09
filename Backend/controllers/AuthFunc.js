@@ -63,7 +63,7 @@ export const login=async (req,res)=>{
     }
 
     
-   await newuser.save();
+   await user.save();
 
     const name=user.name;
    const token=jwt.sign({name,password,email},process.env.JWT_SECRET,{
@@ -75,7 +75,13 @@ export const login=async (req,res)=>{
     sameSite:"strict",
     secure:process.env.NODE_ENV !== "dev" ,
     maxAge:15*24*60*60*1000
-});}catch(e){
+});
+    return res.status(201).json({
+        _id:user._id,
+        fullName:user.name,
+        email:user.email,
+    })
+}catch(e){
     return res.status(400).json({error:e.message});
 }
 }
