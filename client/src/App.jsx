@@ -50,12 +50,12 @@ const Approutes =()=>{
         element: <FindService />,
       },
       {
-
-        path:'/about',
-        element:<About/> 
-
         path: "/post-job",
         element: <PostAJob />,
+      },
+      {
+        path:'/about',
+        element:<About/> 
       },
       {
         path: "/worker-detail/:id",
