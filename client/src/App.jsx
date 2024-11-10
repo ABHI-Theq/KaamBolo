@@ -10,8 +10,10 @@ import Home from "./pages/Home";
 import FindService from "./pages/FindService/FindService";
 import 'leaflet/dist/leaflet.css';
 import Signup from "./pages/SignUp";
-import Nav from "./components/Nav";
-
+import Login from "./pages/Login";
+import Nav from './components/Nav'
+import PostAJob from "./pages/PostAJob";
+import WorkerDetail from "./pages/WorkerDetail";
 
 const Layout = () => {
   return (
@@ -35,11 +37,23 @@ const router = createBrowserRouter([
         path: "/find-a-service/:service",
         element: <FindService />,
       },
+      {
+        path: "/post-job",
+        element: <PostAJob />,
+      },
+      {
+        path: "/worker-detail/:id",
+        element: <WorkerDetail />,
+      },
     ],
   },
   {
     path:"/signup",
     element:<Signup/>
+  },
+  {
+    path:"/login",
+    element:<Login/>
   },
 ]);
 

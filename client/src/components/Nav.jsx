@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import logo from '../assets/Your_paragraph_text-removebg-preview.png';
 
 const Nav = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -13,9 +14,10 @@ const Nav = () => {
     <nav className="bg-blue-800 text-white">
       <div className="container mx-auto flex justify-between items-center px-4 py-3">
         {/* Brand */}
-        <Link to="/home" className="text-2xl font-bold">
-          KaamBolo
-        </Link>
+        <Link to="/" className="text-2xl font-bold">
+  <h2 className="anton-sc-regular">KaamBolo</h2>
+</Link>
+
 
         {/* Toggle Button (for mobile) */}
         <button
@@ -123,10 +125,14 @@ const Nav = () => {
 
           {/* Signup / Login */}
           <Link
-            to="/signup-login"
+            to="/signup"
             className="text-lg font-semibold hover:text-yellow-400"
           >
-            Signup / Login
+            Signup
+          </Link>
+          <span> | </span>
+          <Link to='/login'
+                      className="text-lg font-semibold hover:text-yellow-400">Login
           </Link>
         </div>
       </div>
