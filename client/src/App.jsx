@@ -51,6 +51,10 @@ const Approutes =()=>{
         element: <PostAJob />,
       },
       {
+        path:'/about',
+        element:<About/> 
+      },
+      {
         path: "/worker-detail/:id",
         element: <WorkerDetail />,
       },{
