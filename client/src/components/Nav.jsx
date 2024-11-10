@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -5,6 +6,13 @@ import services from "../data/services";
 import useGetServiceProvider from "../hooks/useGetServiceProvider";
 
 import logo from "../assets/Your_paragraph_text-removebg-preview.png";
+
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import logo from '../assets/Your_paragraph_text-removebg-preview.png';
+import services from '../data/services';
+import useGetServiceProvider from '../hooks/useGetServiceProvider';
+
 
 const Nav = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -25,8 +33,15 @@ const Nav = () => {
       <div className="container mx-auto flex justify-between items-center px-4 py-3">
         {/* Brand */}
         <Link to="/" className="text-2xl font-bold">
+
           KaamBolo
         </Link>
+
+  <h2 className="anton-sc-regular">KaamBolo</h2>
+</Link>
+
+        {/* </Link> */}
+
 
         {/* Toggle Button (for mobile) */}
         <button

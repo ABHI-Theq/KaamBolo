@@ -13,17 +13,14 @@ import 'leaflet/dist/leaflet.css';
 import Signup from "./pages/SignUp";
 import Login from "./pages/Login";
 import Nav from './components/Nav'
+import PostAJob from "./pages/PostAJob";
+import WorkerDetail from "./pages/WorkerDetail";
 
 import About from "./components/about";
 import { Rating } from "@mui/material";
 import OnlineUsers from "./components/OnlineUsers";
 import useAuthContext from "./context/AuthContext";
 // const {authUser} =AuthContext()
-
-import PostAJob from "./pages/PostAJob";
-import WorkerDetail from "./pages/WorkerDetail";
-
-
 const Layout = () => {
   return (
     <div className="layout">
@@ -60,7 +57,9 @@ const Approutes =()=>{
       {
         path: "/worker-detail/:id",
         element: <WorkerDetail />,
-
+      },{
+                path:'/about',
+        element:<About/> 
       },
     ],
   },
