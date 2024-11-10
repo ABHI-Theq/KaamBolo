@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import services from '../data/services';
+import useGetServiceProvider from '../hooks/useGetServiceProvider';
 
 const Nav = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -9,6 +11,11 @@ const Nav = () => {
   const openDropdown = () => setIsDropdownOpen(true);
   const closeDropdown = () => setIsDropdownOpen(false);
 
+  const {loading,providers,setProviders,getProviders}=useGetServiceProvider()
+   async function handleSubmit(service) {
+    const providers=await getProviders(service);
+    console.log(providers); 
+  }
   return (
     <nav className="bg-blue-800 text-white">
       <div className="container mx-auto flex justify-between items-center px-4 py-3">
@@ -60,15 +67,30 @@ const Nav = () => {
                 onMouseLeave={closeDropdown}
               >
                 <ul className="py-2">
-                  <li>
+                  {services.map((service,index)=>{
+                                     return( <li key={index}>
+                                      <Link
+                                        to={`/find-a-service/${service}`}
+                                        onClick={(e)=>{
+                                          handleSubmit(service);
+                                          
+                                        }}
+                                        className="block px-4 py-2 hover:bg-gray-200"
+                                      >
+                                        {service}
+                                      </Link>
+                                    </li>)
+                  })
+                  }
+                  {/* <li>
                     <Link
                       to="/find-a-service/plumber"
                       className="block px-4 py-2 hover:bg-gray-200"
                     >
                       Plumber
                     </Link>
-                  </li>
-                  <li>
+                  </li> */}
+                  {/* <li>
                     <Link
                       to="/find-a-service/electrician"
                       className="block px-4 py-2 hover:bg-gray-200"
@@ -107,7 +129,7 @@ const Nav = () => {
                     >
                       Appliance Repair
                     </Link>
-                  </li>
+                  </li> */}
                 </ul>
               </div>
             )}
@@ -135,7 +157,7 @@ const Nav = () => {
           >
             Signup
           </Link>
-          <span> | </span>
+          <span>|</span>
           <Link to='/login'
                       className="text-lg font-semibold hover:text-yellow-400">Login
           </Link>

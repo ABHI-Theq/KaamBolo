@@ -4,6 +4,7 @@ import {
   Route,
   Outlet,
   Link,
+  Navigate,
 } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/Home";
@@ -13,7 +14,10 @@ import Signup from "./pages/SignUp";
 import Login from "./pages/Login";
 import Nav from './components/Nav'
 import About from "./components/about";
-
+import { Rating } from "@mui/material";
+import OnlineUsers from "./components/OnlineUsers";
+import useAuthContext from "./context/AuthContext";
+// const {authUser} =AuthContext()
 const Layout = () => {
   return (
     <div className="layout">
@@ -23,7 +27,9 @@ const Layout = () => {
   );
 };
 
-const router = createBrowserRouter([
+const Approutes =()=>{ 
+  const {authUser}=useAuthContext()
+  return (createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
@@ -38,25 +44,31 @@ const router = createBrowserRouter([
       },
       {
         path:'/about',
-        element:<About/>
-        
-      }
+        element:<About/> 
+      },
     ],
   },
   {
     path:"/signup",
-    element:<Signup/>
+    element:authUser ? <Navigate to="/" /> : <Signup />
   },
   {
     path:"/login",
-    element:<Login/>
+    element:authUser ? <Navigate to="/" /> : <Login />
+  },{
+    path:"/rate",
+    element:<Rating/>
   },
-]);
+  {
+    path:'/getUsers',
+    element:<OnlineUsers/>
+  }
+]))};
 
 function App() {
   return (
     <>
-      <RouterProvider router={router} />
+      <RouterProvider router={Approutes()} />
     </>
   );
 }

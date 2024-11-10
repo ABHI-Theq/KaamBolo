@@ -3,10 +3,15 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-
+import { AuthProvider } from './context/AuthContext';
+import { SocketProvider } from './context/SocketContext';
 ReactDOM.render(
   <React.StrictMode>
+    <AuthProvider>
+      <SocketProvider>
     <App />
+    </SocketProvider>
+    </AuthProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

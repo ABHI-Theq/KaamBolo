@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import useLogin from '../hooks/useLogin';
 function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-  
-    const handleSubmit = (e) => {
+    const {loading,login}=useLogin()
+    const handleSubmit = async(e) => {
         e.preventDefault();
         console.log('Email:', email);
         console.log('Password:', password);
+        await login({email,password})
     };
 
     return (

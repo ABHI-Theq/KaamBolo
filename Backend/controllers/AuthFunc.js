@@ -2,8 +2,8 @@ import User from './../model/Schema.js'
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs'
 export const SignUp=async (req,res)=>{
-   try{const  {name,email,password,skills,confirmPassword,role}=req.body;
-   if(!name || !email || !password || !confirmPassword || !role){
+   try{const  {fullName,email,password,skills,confirmPassword,role}=req.body;
+   if(!fullName || !email || !password || !confirmPassword || !role){
     return res.status(400).json({error:"Please fill all the fields"})
    }
 
@@ -16,7 +16,7 @@ export const SignUp=async (req,res)=>{
    const pwd=await bcrypt.hash(password,hash);
 
    const newuser=new User({
-    name:name,
+    name:fullName,
     email:email,
     Skills:skills,
     password:pwd,
@@ -26,7 +26,7 @@ export const SignUp=async (req,res)=>{
 
    await newuser.save();
 
-   const token=jwt.sign({name,password,email},process.env.JWT_SECRET,{
+   const token= jwt.sign({fullName,password,email},process.env.JWT_SECRET,{
     expiresIn:"15d"
    })
 
@@ -41,10 +41,12 @@ res.status(200).json({
     _id:newuser._id,
     fullName:newuser.name,
     email:newuser.email,
-    profilePic:newuser.profilePic
+    Skills:newuser.skills,
+    role:newuser.role,
+
 })
 }catch(e){
-    return res.status(500).json({error:e.message})
+    return res.status(500).json({error:e})
 }
 
 }
@@ -57,7 +59,7 @@ export const login=async (req,res)=>{
         return res.status(400).json({error:"Invalid email"})
     }    
 
-    const isMatch=bcrypt.compare(password,user.password);
+    const isMatch=await bcrypt.compare(password,user.password);
     if(!isMatch){
         return res.status(400).json({error:"Invalid password"})
     }

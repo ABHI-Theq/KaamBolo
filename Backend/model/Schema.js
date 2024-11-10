@@ -15,7 +15,7 @@ const userSchema=new mongoose.Schema({
     role:{type:String,required:true,
         enum:["serviceGiver","serviceProvider"]
     }
-})
+},{timestamps:true})
 
 // Create a compound unique index on email and role
 userSchema.index({ email: 1, role: 1 }, { unique: true });

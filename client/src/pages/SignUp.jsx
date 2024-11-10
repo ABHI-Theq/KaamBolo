@@ -1,19 +1,30 @@
 import React, { useState } from 'react';
 import { Autocomplete,TextField } from '@mui/material';
 import { skillOptions } from '../data/skills';
+import useSignUp from './../hooks/useSignUp'
+import useAuthContext from '../context/AuthContext';
 function Signup() {
+
+  const {loading,signup} =useSignUp()
+  const {authUser}=useAuthContext()
     const [selectedSkills, setSelectedSkills] = useState([]);
   const [inputs, setInputs] = useState({
     fullName: "",
     email: "",
+    skills:[],
     password: "",
-    Skills:[],
-    confirmPassword: ""
+    confirmPassword: "",
+    role:""
   });
 
-  const handleSubmit = (e) => {
+
+  const handleSubmit =async(e) => {
     e.preventDefault();
-    console.log(inputs);
+    // console.log(inputs);
+    console.log({...inputs,skills:selectedSkills});
+    
+    await signup({...inputs,skills:selectedSkills})
+
     // Add your submit logic here, like calling an API
   };
 
@@ -47,6 +58,16 @@ function Signup() {
             />
           </div>
 
+          <div>
+            <label className="block text-gray-600">Role</label>
+            <input
+              type="text"
+              placeholder="Enter your Role"
+              value={inputs.role}
+              onChange={(e) => setInputs({ ...inputs, role: e.target.value })}
+              className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
           {/* Password Field */}
           <div>
             <label className="block text-gray-600">Password</label>
@@ -78,7 +99,7 @@ function Signup() {
         value={selectedSkills}
         onChange={(event, newValue) => {
             setSelectedSkills(newValue)
-            inputs.Skills=selectedSkills
+            // inputs.Skills=selectedSkills
         }}
         renderInput={(params) => (
           <TextField {...params} label="Skills" placeholder="Select skills" />
