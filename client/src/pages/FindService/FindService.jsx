@@ -30,7 +30,7 @@ const FindService = () => {
   // });
 
   return (
-      <div className="find-service">
+      <div className="find-service flex flex-wrap">
         <Map />
       </div>
   );

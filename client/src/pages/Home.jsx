@@ -1,7 +1,12 @@
 import React from "react";
-
+import { useSocketContext } from "../context/SocketContext";
 const Home = () => {
+  // const { socket,onlineUsers } = useSocketContext();
+  // console.log(onlineUsers);
+  
+  
   return (
+
     <div className="font-sans text-gray-900">
       {/* Hero Section */}
       <header className="bg-blue-800 text-white h-screen flex flex-col items-center justify-center">

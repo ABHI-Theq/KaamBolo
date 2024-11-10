@@ -4,6 +4,7 @@ import {
   Route,
   Outlet,
   Link,
+  Navigate,
 } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/Home";
@@ -12,8 +13,16 @@ import 'leaflet/dist/leaflet.css';
 import Signup from "./pages/SignUp";
 import Login from "./pages/Login";
 import Nav from './components/Nav'
+
+import About from "./components/about";
+import { Rating } from "@mui/material";
+import OnlineUsers from "./components/OnlineUsers";
+import useAuthContext from "./context/AuthContext";
+// const {authUser} =AuthContext()
+
 import PostAJob from "./pages/PostAJob";
 import WorkerDetail from "./pages/WorkerDetail";
+
 
 const Layout = () => {
   return (
@@ -22,9 +31,12 @@ const Layout = () => {
       <Outlet />
     </div>
   );
+  
 };
 
-const router = createBrowserRouter([
+const Approutes =()=>{ 
+  const {authUser}=useAuthContext()
+  return (createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
@@ -38,29 +50,41 @@ const router = createBrowserRouter([
         element: <FindService />,
       },
       {
+
+        path:'/about',
+        element:<About/> 
+
         path: "/post-job",
         element: <PostAJob />,
       },
       {
         path: "/worker-detail/:id",
         element: <WorkerDetail />,
+
       },
     ],
   },
   {
     path:"/signup",
-    element:<Signup/>
+    element:authUser ? <Navigate to="/" /> : <Signup />
   },
   {
     path:"/login",
-    element:<Login/>
+    element:authUser ? <Navigate to="/" /> : <Login />
+  },{
+    path:"/rate",
+    element:<Rating/>
   },
-]);
+  {
+    path:'/getUsers',
+    element:<OnlineUsers/>
+  }
+]))};
 
 function App() {
   return (
     <>
-      <RouterProvider router={router} />
+      <RouterProvider router={Approutes()} />
     </>
   );
 }
