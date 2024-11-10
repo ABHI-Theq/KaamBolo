@@ -13,11 +13,17 @@ import 'leaflet/dist/leaflet.css';
 import Signup from "./pages/SignUp";
 import Login from "./pages/Login";
 import Nav from './components/Nav'
+
 import About from "./components/about";
 import { Rating } from "@mui/material";
 import OnlineUsers from "./components/OnlineUsers";
 import useAuthContext from "./context/AuthContext";
 // const {authUser} =AuthContext()
+
+import PostAJob from "./pages/PostAJob";
+import WorkerDetail from "./pages/WorkerDetail";
+
+
 const Layout = () => {
   return (
     <div className="layout">
@@ -25,6 +31,7 @@ const Layout = () => {
       <Outlet />
     </div>
   );
+  
 };
 
 const Approutes =()=>{ 
@@ -43,8 +50,17 @@ const Approutes =()=>{
         element: <FindService />,
       },
       {
+
         path:'/about',
         element:<About/> 
+
+        path: "/post-job",
+        element: <PostAJob />,
+      },
+      {
+        path: "/worker-detail/:id",
+        element: <WorkerDetail />,
+
       },
     ],
   },
