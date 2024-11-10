@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import services from '../data/services';
-import useGetServiceProvider from '../hooks/useGetServiceProvider';
 
 const Nav = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -20,7 +18,7 @@ const Nav = () => {
     <nav className="bg-blue-800 text-white">
       <div className="container mx-auto flex justify-between items-center px-4 py-3">
         {/* Brand */}
-        <Link to="/" className="text-2xl font-bold">
+        <Link to="/home" className="text-2xl font-bold">
           KaamBolo
         </Link>
 
